@@ -1,0 +1,33 @@
+thead tr th{
+    background-color: #f8b864;
+    /* background: linear-gradient(148deg, rgba(255,243,72,1) 0%, rgba(252,160,69,1) 24%); */
+  }
+  h2{
+    color:#f8b864;
+  }
+  td th{
+    border-right: 1px;
+  }
+  
+  i:hover{
+    cursor: pointer;
+    color: green;
+  }
+  .loader{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-msg{
+    font-size: 13px;
+  }
+ 
+  .search-input{
+  margin-left: 180px;
+}

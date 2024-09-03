@@ -1,0 +1,114 @@
+<app-adminnav></app-adminnav>
+
+<div class="background-div circle shape position-relative d-flex align-items-center justify-content-center overflow-hidden">
+    <div class="formDiv bg-white p-4 mt-2 rounded-4 shadow-lg">
+        <form [formGroup]="charityForm" (ngSubmit)="addCharity()" *ngIf="selectedCharity===null" class="m-auto">
+            <h3 class="text-center mb-3">Create Charity</h3>
+            <div class="mb-2">
+                <label for="charityName">Charity Name<span style="color:red">*</span></label>
+                <input type="text" id="charityName" formControlName="charityName" name="charityName" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="charityName.touched && charityName.invalid">
+                    <div *ngIf="charityName.errors['required']" style="color:red">*Charity Name is required</div>
+                    
+                </div>
+        
+            </div>
+            <div class="mb-2">
+                <label for="founder">Founder<span style="color:red">*</span></label>
+                <input type="text" id="founder" formControlName="founder" name="founder" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="founder.touched && founder.invalid">
+                    <div *ngIf="founder.errors['required']" style="color:red">*Founder is required</div>
+                    
+                </div>
+        
+            </div>
+            
+            <div class="mb-2">
+                <label for="description">Description<span style="color:red">*</span></label>
+                <input type="text" id="description" formControlName="description" name="description" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="description.touched && description.invalid">
+                    <div *ngIf="description.errors['required']" style="color:red">*Description is required</div>
+                    
+                </div>
+        
+            </div>
+            
+        
+            <div class="mb-2">
+                <label for="status">Status<span style="color:red">*</span></label>
+                <select id="status" formControlName="status" name="status" class="rounded border-0 bg-light w-100 p-2">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>    
+                <div class="error-msg" *ngIf="status.touched && status.invalid">
+                    <div *ngIf="status.errors['required']" style="color:red">*Status is required</div>
+                    
+                </div>
+        
+            </div>
+            <span id="charity-error" style="color: red;font-size: 11px;"></span>
+            <div>
+                <button type="submit" class="btn text-white d-block mx-auto w-50 mt-4">Add Charity</button>
+            </div>
+        
+        </form>
+        <p *ngIf="successMsg" class="text-center text-success ">{{successMsg}}</p>
+        
+        <form (ngSubmit)="updateCharity()" *ngIf="selectedCharity!==null" class="m-auto">
+        
+            <h3 class="text-center mb-3">Edit Charity</h3>
+            
+            <div class="mb-2">
+                <label for="charityName">Charity Name<span style="color:red">*</span></label>
+                <input type="text" id="charityName" [(ngModel)] = "newCharity.charityName" name="charityName" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="charityName.touched && charityName.invalid">
+                    <div *ngIf="charityName.errors['required']" style="color:red">*Charity Name is required</div>
+                    
+                </div>
+        
+            </div>
+            <div class="mb-2">
+                <label for="founder">Founder<span style="color:red">*</span></label>
+                <input type="text" id="founder" [(ngModel)] = "newCharity.founder" name="founder" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="founder.touched && founder.invalid">
+                    <div *ngIf="founder.errors['required']" style="color:red">*Founder is required</div>
+                    
+                </div>
+        
+            </div>
+            
+            <div class="mb-2">
+                <label for="description">Description<span style="color:red">*</span></label>
+                <input type="text" id="description" [(ngModel)] = "newCharity.description" name="description" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="description.touched && description.invalid">
+                    <div *ngIf="description.errors['required']" style="color:red">*Description is required</div>
+                    
+                </div>
+        
+            </div>
+            
+        
+            <div class="mb-2">
+                <label for="status">Status<span style="color:red">*</span></label>
+                <select id="status" [(ngModel)] = "newCharity.status" name="status" class="rounded border-0 bg-light w-100 p-2">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>    
+                <div class="error-msg" *ngIf="status.touched && status.invalid">
+                    <div *ngIf="status.errors['required']" style="color:red">*Status is required</div>
+                    
+                </div>
+            </div>
+            <span id="charityerror" style="color: red;font-size: 11px;"></span>
+            <div>
+                <button type="submit" class="btn text-white d-block mx-auto w-50 mt-4">Update</button>
+            </div>
+        
+        </form>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,11 @@
+#Spring Target
+springapp/target
+springapp/.mvn
+springapp/src/test
+springapp/src/main/java/com/examly/springapp/utils
+
+#Angular
+angularapp/node_modules
+angularapp/package-lock.json
+angularapp/karma.conf.js
+angularapp/src/environments/environment.ts

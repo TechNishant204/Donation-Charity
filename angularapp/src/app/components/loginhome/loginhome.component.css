@@ -1,0 +1,15 @@
+h1{
+    /* color:#f8b864; */
+    color: #fca045;
+    font-size: 65px;
+}
+.inner-div{
+    height: 50%;
+}
+.poster-div{
+    height: 100vh;
+    background-image: url('../../../assets/images/poster.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

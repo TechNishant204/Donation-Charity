@@ -1,0 +1,68 @@
+<app-usernav></app-usernav>
+<h2 class="text-center mt-4">All Charities</h2>
+<input type="text" placeholder="Search By Charity Name" [(ngModel)]="searchTitle" (input)="searchCharity()" class="rounded border-0 bg-light w-25 p-2 search-input">
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <table border="1" class="table table-hover w-75">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Charity Name</th>
+                <th>Description</th>
+                <th>Founder</th>
+                <th>Creation Date</th>
+                <th>Status</th>
+                <th>Donate</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="charities.length > 0">
+            <tr *ngFor="let charity of charities;index as i">
+                <td>{{i+1}}</td>
+                <td>{{charity.charityName}}</td>
+                <td>{{charity.description}}</td>
+                <td>{{charity.founder}}</td>
+                <td>{{charity.creationDate}}</td>
+                <td>{{charity.status}}</td>
+                <td><i class="fa-solid fa-circle-dollar-to-slot ms-3" (click)="donateCharity(charity)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="emptyMsg" class="text-center">
+    {{emptyMsg}}
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Donate to Charity</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="donationForm" (ngSubmit)="addDonation()">
+            <div class="modal-body">
+                <div>
+                    <label for="amount" class="d-block">Donation Amount: </label>
+                    <input type="number" id="amount" name="amount" formControlName="amount" class="border-0 bg-secondary-subtle w-75 p-2 rounded-2">
+                    <div class="error-msg mt-2" *ngIf="amount.touched && amount.invalid">
+                        <div *ngIf="amount.errors['min']" style="color:red">*Minimum amount 100Rs</div>
+                        <div *ngIf="amount.errors['required']" style="color:red">*Amount is required</div>
+                    </div>
+                    <p *ngIf="successMsg" class="text-successmt-2">{{successMsg}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeDonationForm()">Close</button>
+                <button type="submit" class="btn btn-primary">Donate</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+<div *ngIf="isLoading" class="loader">
+    <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>          
+</div>

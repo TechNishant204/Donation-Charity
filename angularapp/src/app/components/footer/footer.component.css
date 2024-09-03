@@ -1,0 +1,25 @@
+
+a{
+    color: #555555e8;
+    text-decoration: none;
+
+}
+li{
+    list-style: none;
+}
+.footer-msg{
+    line-height: 10px;
+}
+p{
+    color: #555555e8;
+}
+li p{
+    margin: 0;
+}
+.donate-btn{
+    background-color: #fca045e5;
+}
+.main-footer{
+    padding: 0px 140px;
+    background-color: #f2f2f2;
+}

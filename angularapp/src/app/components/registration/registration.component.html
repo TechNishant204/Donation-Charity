@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="background-div circle shape position-relative d-flex align-items-center justify-content-center overflow-hidden pt-5">
+    <div class="formDiv bg-white p-4 rounded-4 shadow-lg">
+        <h3 class="text-center pb-3">Registration</h3>
+        <form [formGroup]="registerForm" (ngSubmit) = "registerUser()" class="m-auto">
+            <div class="pb-2">
+                <label for="username">Username<span style="color:red">*</span>:</label>
+                <input type="text" id="username" formControlName = "username" name="username" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="username.touched && username.invalid">
+                    <div *ngIf="username.errors['required']" style="color:red">*Username is required</div>
+                </div>
+            </div>
+            
+            <div class="pb-2">
+                <label for="email">Email<span style="color:red">*</span>:</label>
+                <input type="email" id="email" formControlName = "email" name="email" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="email.touched && email.invalid">
+                    <div *ngIf="email.errors['required']" style="color:red">*Email is required</div>
+                    <div *ngIf="email.errors['email']" style="color:red">*Please enter a valid email</div>
+                </div>
+                
+            </div>
+            
+            <div class="pb-2">
+                <label for="password">Password<span style="color:red">*</span>:</label>
+                <input type="password" id="password" formControlName = "password" name="password" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="password.touched && password.invalid">
+                    <div *ngIf="password.errors['required']" style="color:red">*Password is required</div>
+                    <div *ngIf="password.errors['pattern']" style="color:red">*Password must include at least one upppercase letter, one lowercase letter, one digit, one special character and Minimum 8 Characters</div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="pb-2">
+                <label for="confirmPassword">Confirm Password<span style="color:red">*</span>:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="rounded border-0 bg-light w-100 p-2" (input)="passwordMatch()">
+                <span id="matherror" style="color: red;font-size: 11px;"></span>
+                <div class="error-msg" *ngIf="confirmPassword.touched && password.invalid">
+                    <div *ngIf="confirmPassword.errors['required']" style="color:red">*Confirm Password is required</div>
+                    <div *ngIf="password !== confirmPassword" style="color:red">*Password do not match</div>
+                </div>
+            </div>
+        
+            <div class="pb-2">
+                <label for="mobileNumber">Mobile Number<span style="color:red">*</span>:</label>
+                <input type="number" id="mobileNumber" formControlName = "mobileNumber" name="mobileNumber" class="rounded border-0 bg-light w-100 p-2">
+                <div class="error-msg" *ngIf="mobileNumber.touched && mobileNumber.invalid">
+                    <div *ngIf="mobileNumber.errors['required']" style="color:red">*Mobile Number is required</div>
+                    <div *ngIf="mobileNumber.errors['pattern']" style="color:red">*Mobile Number must be 10 digits</div>
+                </div>
+            </div>
+        
+            <div class="pb-2">
+                <label for="role">Role<span style="color:red">*</span>:</label>
+                <select id="role" name="role" formControlName="role" class="rounded border-0 bg-light w-100 p-2">
+                    <option value="none">Select</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="USER">User</option>
+                </select>
+                <div class="error-msg" *ngIf="role.touched && role.invalid" style="color:red">
+                    *Role is required</div>
+                
+            </div>
+            <span id="registration-error" style="color: red;font-size: 11px;"></span>
+            <div class="pt-2">
+                <button type="submit" class="btn rounded text-white w-100 border-0 mt-2 p-2" [disabled]="registerForm.invalid"><i class="fa-regular fa-user me-2" style="color: #ffffff;"></i>Create Account</button>
+            </div>
+        </form>
+    </div>
+</div>

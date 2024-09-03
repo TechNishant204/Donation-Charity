@@ -1,0 +1,22 @@
+.navcontainer{
+  /* background-color: #f8b864; */
+  background: rgb(255,243,72);
+  background: linear-gradient(148deg, rgba(255,243,72,1) 0%, rgba(252,160,69,1) 24%);
+  position: fixed;
+  width: 100%;
+  z-index: 111;
+}
+
+li{
+  margin-left: 2rem;
+  list-style: none;
+}
+  
+a{
+  color:white;
+  text-decoration:none;
+}
+
+li a:hover{
+  color: black;
+}

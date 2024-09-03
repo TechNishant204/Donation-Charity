@@ -1,0 +1,54 @@
+.formDiv{
+  width: 35%;
+  margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+label{
+  display: block;
+}
+
+h3{
+  color: #f8b864;
+}
+.circle:before {
+  background-color: #f8b864;
+  content: '';
+  height: 800px;
+  width: 800px;
+  position: absolute;
+  top: -465px;
+  left: -345px;
+  border-radius: 100%;
+  opacity: 0.2;
+  z-index: -1;
+  overflow: hidden;
+}
+.shape:after {
+  background-color: #f8b864;
+  content: '';
+  width: 50%;
+  height: 680px;
+  position: absolute;
+  top: 427px;
+  right: -209px;
+  border-radius: 100%;
+  -webkit-transform: skew(3deg, 30deg);
+  -ms-transform: skew(3deg, 30deg);
+  transform: skew(1deg, 3deg);
+  opacity: 0.3;
+  z-index: -1;
+  overflow: hidden;
+}
+.btn{
+  background-color: #2962FF;
+}
+form{
+  width: 85%;
+  padding-bottom: 20px;
+}
+
+.error-msg{
+  font-size: 11px;
+}

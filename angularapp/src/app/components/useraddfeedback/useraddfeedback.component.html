@@ -1,0 +1,21 @@
+<app-usernav></app-usernav>
+<div class="container">
+    <div  class="formDiv bg-white p-4 mt-2 rounded-4 shadow-lg">
+        
+        <form [formGroup]="addFeedbackForm" (ngSubmit)="addFeedback()" class="m-auto">
+            
+            
+            <h3 class="text-center m-3 mb-4">Your Opinion matters!</h3>
+        
+        <textarea type="text" id="feedback" formControlName="feedbackText" rows="7" cols="50" class="rounded border-0 bg-light w-100 p-2" placeholder="Feedback..."></textarea>
+        <br>
+        <div class="error-msg" *ngIf="feedback.touched && feedback.invalid">
+            <div *ngIf="feedback.errors['required']" style="color:red">*Feedback is required</div>
+            
+        </div>
+        
+        <button type="submit" class="btn text-white d-block mx-auto w-40 mt-4" [disabled]="addFeedbackForm.invalid">Submit</button>
+    </form>
+</div>
+    
+</div>

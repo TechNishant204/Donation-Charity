@@ -1,0 +1,66 @@
+<app-usernav></app-usernav>
+<h2 class="text-center mt-4">My Donations</h2>
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <table border="1" class="table table-hover w-75">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Donor Name</th>
+                <th>Charity Name</th>
+                <th>Amount</th>
+                <th>Donation Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody *ngIf="donations.length > 0">
+            <tr *ngFor="let d of donations; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{d.user.username}}</td>
+                <td>{{d.charity.charityName}}</td>
+                <td>{{d.amount}}</td>
+                <td>{{d.donationDate}}</td>
+                <td><button (click)="showCharity(d)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="border-0 rounded" style="background-color: #f8b864;">Show Charity</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="emptyMsg" class="text-center">
+    {{emptyMsg}}
+</div>
+
+
+<div *ngIf="isLoading" class="loader">
+    <div class="spinner-grow text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>          
+</div>
+
+
+<!-- <div *ngIf="flag==true">
+    <div class="modal-content">
+      <p></p><br>
+     
+     <button (click)="flag=false">Close</button> 
+ </div> -->
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Charity Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="selectedDonation!==null">
+                <p><span class="fw-bold">Charity Name: </span>{{selectedDonation.charity.charityName}}</p>
+                <p><span class="fw-bold">Description: </span>{{selectedDonation.charity.description}}</p>
+                <p><span class="fw-bold">Founder: </span>{{selectedDonation.charity.founder}}</p>
+                <p><span class="fw-bold">Creation Date: </span>{{selectedDonation.charity.creationDate}}</p>
+                <p><span class="fw-bold">Status: </span>{{selectedDonation.charity.status}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
